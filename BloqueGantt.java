@@ -5,10 +5,10 @@ package controlador;
  * Se usa tanto para dibujar el Diagrama de Gantt como para animar la simulacion.
  */
 public class BloqueGantt {
-    public final int pid;
-    public final String nombre;
-    public final int inicio; // tiempo en que comienza el bloque
-    public final int fin;    // tiempo en que termina el bloque (exclusivo)
+    public int pid;
+    public String nombre;
+    public int inicio; // tiempo en que comienza el bloque
+    public int fin;    // tiempo en que termina el bloque (exclusivo)
 
     public BloqueGantt(int pid, String nombre, int inicio, int fin) {
         this.pid = pid;
