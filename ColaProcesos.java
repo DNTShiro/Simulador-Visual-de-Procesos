@@ -1,5 +1,3 @@
-package controlador;
-
 import modelo.Proceso;
 
 /**
