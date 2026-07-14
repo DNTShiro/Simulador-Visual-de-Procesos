@@ -8,13 +8,13 @@ public class Procesos {
     String nombre;
     int tiempoLLegada;
     int prioridad;
-    int rafaga; //tiempo del CPU que necesita 
-    int memoriaRequerida;
-    int tiempoRequerido;
+    int rafaga;             //tiempo del CPU que necesita 
+    int memoriaRequerida;   // KB simulados
+    int tiempoRestante;
     EstadoProceso estado;
     int tiempoInicio = -1;
     int tiempoFin = -1;
-    boolean advertenciaMemoria;
+    boolean advertenciaMemoria = false;
 
     public Procesos(int ID, String nombre, int tiempoLLegada, int rafaga, int prioridad, int memoriaRequerida) {
         this.ID = ID;
@@ -64,5 +64,42 @@ public class Procesos {
         if (tiempoInicio == -1){
             tiempoInicio = t;
         }
+    }
+    public int gettiempoFin() {
+        retunr tiempoFin;
+    }
+    public void settiempoFin(int tiempoFin) {
+        this.tiempoFin = tiempoFin;
+    }
+    public boolean isadvertenciaMemoria() {
+        return advertenciaMemoria;
+    }
+    public void setadvertenciaMemoria(boolean valor) {
+        advertenciaMemoria = valor;
+    }
+    // Tiempo de retorno = fin - llegada
+    public int getTiempoRetorno() {
+        if (tiempoFin == -1) {
+            return -1;
+        }
+        return tiempoFin - tiempoLlegada;
+    }
+    // Tiempo de espera = retorno - rafaga
+    public int getTiempoEspera() {
+        if (tiempoFin == -1) {
+            return -1;
+        }
+        return getTiempoRetorno() - rafaga;
+    }
+    // vuelve a dejar el proceso como recien creado, para simulae otra vez
+    public void reiniciar() {
+        tiempoRestante = rafaga;
+        estado = EstadoProceso.NUEVO;
+        tiempoInicio = -1;
+        tiempoFin = -1;
+        advertenciaMemoria = false;
+    }
+    public string toString() {
+        return ID + "-" + nombre;
     }
 }
