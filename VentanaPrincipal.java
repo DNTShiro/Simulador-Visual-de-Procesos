@@ -14,13 +14,13 @@ import java.util.Random;
 public class VentanaPrincipal extends JFrame implements ActionListener {
     
     //Lista de procesos que se van a simular
-    List<Proceso> procesos = new ArrayList<Proceso>();
-    int siguienteID = 1;
+    private List<Proceso> procesos = new ArrayList<Proceso>();
+    private int siguientePid = 1;
     
     //tabla de procesos (con DefaultTableModel)
-    String[] columnas = {"ID", "Nombre", "Llegada", "Rafaga", "Prioridad", "Mem(KB)", "Estado", "Restante", "Espera", "Retorno"};
-    DefaultTableModel modeloTabla = new DefaultTableModel(columnas,0);
-    JTable tablaProcesos = new JTable(modeloTabla);
+    private String[] columnas = {"PID", "Nombre", "Llegada", "Rafaga", "Prioridad", "Estado", "Restante", "Espera", "Retorno"};
+    private DefaultTableModel modeloTabla = new DefaultTableModel(columnas, 0);
+    private JTable tablaProcesos = new JTable(modeloTabla);
     
     //Controladores
     
