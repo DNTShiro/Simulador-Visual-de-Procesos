@@ -9,10 +9,10 @@ import java.util.HashMap;
  */
 public class BloqueGantt{
 
-    public int pid;
-    public String nombre;
-    public int inicio;
-    public int fin;
+    private int pid;
+    private String nombre;
+    private int inicio;
+    private int fin;
 
     public BloqueGantt( int pid, String nombre, int inicio, int fin) {
         this.pid = pid;
