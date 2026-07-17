@@ -1,4 +1,4 @@
-package com.mycompany.vista;
+package vista;
 
 import javax.swing.JPanel;
 import java.awt.Color;
