@@ -1,4 +1,3 @@
-package modelo;
 
 /**
  * Ciclo de vida del proceso dentro del simulador.
@@ -10,3 +9,4 @@ public enum EstadoProceso {
     ESPERA_MEMORIA, // No pudo cargarse por falta de RAM simulada
     TERMINADO    // Finalizo su ejecucion
 }
+Move VentanaPrincipal.java to modelo package
