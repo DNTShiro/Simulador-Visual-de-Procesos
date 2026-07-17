@@ -56,8 +56,9 @@ public class PanelBarra extends JPanel {
         g2.drawRoundRect(0, 0, anchoRelleno, barraAlto, 6, 6);
 
         g2.setFont(new Font("Monospaced", Font.BOLD, 12));
-        g2.setColor( Color.White);
-        g2.drawString, 8, barraAlto - 7);
+        g2.setColor(Color.WHITE);
+        g2.drawString(etiqueta, 8, barraAlto - 7);
+
     }
 }
         
