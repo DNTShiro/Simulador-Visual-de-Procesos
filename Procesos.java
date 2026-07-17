@@ -5,7 +5,7 @@ package modelo;
  * el planificador durante la simulacion.
  */
 public class Procesos {
-    int ID;
+    int pid;
     String nombre;
     int tiempoLLegada;
     int prioridad;
@@ -17,8 +17,8 @@ public class Procesos {
     int tiempoFin = -1;
     boolean advertenciaMemoria = false;
 
-    public Procesos(int ID, String nombre, int tiempoLLegada, int rafaga, int prioridad, int memoriaRequerida) {
-        this.ID = ID;
+    public Procesos(int pid, String nombre, int tiempoLLegada, int rafaga, int prioridad, int memoriaRequerida) {
+        this.pid = pid;
         this.nombre = nombre;
         this.tiempoLLegada = tiempoLLegada;
         this.rafaga = rafaga;
@@ -28,8 +28,8 @@ public class Procesos {
         this.estado = EstadoProceso.NUEVO;
     }
 
-    public int getID() {
-        return ID;
+    public int getpid() {
+        return pid;
     }
     public String getnombre() {
         return nombre;
@@ -101,6 +101,6 @@ public class Procesos {
         advertenciaMemoria = false;
     }
     public string toString() {
-        return ID + "-" + nombre;
+        return pid + "-" + nombre;
     }
 }
