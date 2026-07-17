@@ -1,3 +1,5 @@
+package vista;
+
 import modelo.EstadoProceso;
 
 import javax.swing.JTable;
