@@ -1,26 +1,30 @@
 package modelo;
+
 /**
  * Representa un proceso (PCB - Bloque de Control de Proceso).
  * Guarda los datos que se piden al usuario y los datos que calcula
- * el planificador durante la simulacion.
+ * el planificador durante la simulación.
  */
 public class Procesos {
-    int pid;
-    String nombre;
-    int tiempoLLegada;
-    int prioridad;
-    int rafaga;             //tiempo del CPU que necesita 
-    int memoriaRequerida;   // KB simulados
-    int tiempoRestante;
-    EstadoProceso estado;
-    int tiempoInicio = -1;
-    int tiempoFin = -1;
-    boolean advertenciaMemoria = false;
 
-    public Procesos(int pid, String nombre, int tiempoLLegada, int rafaga, int prioridad, int memoriaRequerida) {
+    private int pid;
+    private String nombre;
+    private int tiempoLlegada;
+    private int prioridad;
+    private int rafaga;
+    private int memoriaRequerida;
+    private int tiempoRestante;
+    private EstadoProceso estado;
+    private int tiempoInicio = -1;
+    private int tiempoFin = -1;
+    private boolean advertenciaMemoria = false;
+
+    public Procesos(int pid, String nombre, int tiempoLlegada,
+                    int rafaga, int prioridad, int memoriaRequerida) {
+
         this.pid = pid;
         this.nombre = nombre;
-        this.tiempoLLegada = tiempoLLegada;
+        this.tiempoLlegada = tiempoLlegada;
         this.rafaga = rafaga;
         this.prioridad = prioridad;
         this.memoriaRequerida = memoriaRequerida;
@@ -28,56 +32,72 @@ public class Procesos {
         this.estado = EstadoProceso.NUEVO;
     }
 
-    public int getpid() {
+    public int getPid() {
         return pid;
     }
-    public String getnombre() {
+
+    public String getNombre() {
         return nombre;
     }
-    public int gettiempoLLegada() {
-        return tiempoLLegada;
+
+    public int getTiempoLlegada() {
+        return tiempoLlegada;
     }
-    public int getrafaga() {
+
+    public int getRafaga() {
         return rafaga;
     }
-    public int getprioridad() {
+
+    public int getPrioridad() {
         return prioridad;
     }
-    public int getmemoriaRequerida() {
+
+    public int getMemoriaRequerida() {
         return memoriaRequerida;
     }
-    public int getTiempoRestante() { 
+
+    public int getTiempoRestante() {
         return tiempoRestante;
     }
-    public void setTiempoRestante(int tiempoRestante) { 
+
+    public void setTiempoRestante(int tiempoRestante) {
         this.tiempoRestante = tiempoRestante;
     }
+
     public EstadoProceso getEstado() {
-        return estado; 
+        return estado;
     }
-    public void setEstado(EstadoProceso estado) { 
-        this.estado = estado; 
+
+    public void setEstado(EstadoProceso estado) {
+        this.estado = estado;
     }
-    public int getTiempoInicio() { 
-        return tiempoInicio; 
+
+    public int getTiempoInicio() {
+        return tiempoInicio;
     }
+
     public void setTiempoInicio(int t) {
-        if (tiempoInicio == -1){
+        if (tiempoInicio == -1) {
             tiempoInicio = t;
         }
     }
-    public int gettiempoFin() {
-        retunr tiempoFin;
+
+    public int getTiempoFin() {
+        return tiempoFin;
     }
-    public void settiempoFin(int tiempoFin) {
+
+    public void setTiempoFin(int tiempoFin) {
         this.tiempoFin = tiempoFin;
     }
-    public boolean isadvertenciaMemoria() {
+
+    public boolean isAdvertenciaMemoria() {
         return advertenciaMemoria;
     }
-    public void setadvertenciaMemoria(boolean valor) {
+
+    public void setAdvertenciaMemoria(boolean valor) {
         advertenciaMemoria = valor;
     }
+
     // Tiempo de retorno = fin - llegada
     public int getTiempoRetorno() {
         if (tiempoFin == -1) {
@@ -85,14 +105,16 @@ public class Procesos {
         }
         return tiempoFin - tiempoLlegada;
     }
-    // Tiempo de espera = retorno - rafaga
+
+    // Tiempo de espera = retorno - ráfaga
     public int getTiempoEspera() {
         if (tiempoFin == -1) {
             return -1;
         }
         return getTiempoRetorno() - rafaga;
     }
-    // vuelve a dejar el proceso como recien creado, para simulae otra vez
+
+    // Vuelve a dejar el proceso como recién creado
     public void reiniciar() {
         tiempoRestante = rafaga;
         estado = EstadoProceso.NUEVO;
@@ -100,7 +122,9 @@ public class Procesos {
         tiempoFin = -1;
         advertenciaMemoria = false;
     }
-    public string toString() {
-        return pid + "-" + nombre;
+
+    @Override
+    public String toString() {
+        return pid + " - " + nombre;
     }
 }
