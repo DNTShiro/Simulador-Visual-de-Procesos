@@ -1,5 +1,3 @@
-package vista;
-
 import controlador.BloqueGantt;
 import controlador.GestorMemoria;
 import controlador;.Planificador;
