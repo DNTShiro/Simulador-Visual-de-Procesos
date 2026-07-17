@@ -602,3 +602,4 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         areaLog.setCaretPosition(areaLog.getDocument().getLength());
     }
 }
+Move VentanaPrincipal.java to modelo package
