@@ -1,10 +1,10 @@
-package com.mycompany.vista;
+package vista;
 
 import java.awt.Color;
 import java.awt.Font;
 
 /**
- * Colores y fuentes para que todos los
+ * Colores y fuentes del tema oscuro tipo "terminal", para que todos los
  * paneles se vean consistentes.
  */
 public class Tema {
@@ -36,3 +36,4 @@ public class Tema {
         }
     }
 }
+
