@@ -1,4 +1,5 @@
 package modelo;
+
 public enum EstadoProceso {
     NUEVO,       // Recien creado, aun no ingresa a la cola de listos
     LISTO,       // En la cola de listos, esperando CPU
