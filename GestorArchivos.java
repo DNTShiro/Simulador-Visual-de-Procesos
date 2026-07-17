@@ -1,4 +1,5 @@
-package com.mycompany.persistence;
+package persistencia;
+
 import modelo.Proceso;
 
 import java.io.BufferedReader;
@@ -9,7 +10,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Guarda y carga la lista de procesos en un archivo de texto plano,
  * para que el usuario no tenga que volver a escribir todo cada vez.
