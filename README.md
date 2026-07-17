@@ -14,5 +14,9 @@ Estructura del codigo fuente/
 ├ ├── persistencia/
       └── Gestor de archivo.java   -> Guardar/cargar procesos.txt
 ├ ├── vista/
-      ├── VentanaGrafica.java      -> Ventana Principal
+      ├── Tema.java                -> Colores 
+      ├── RendererEstado.java      -> Diseño de la tabla segun el estado
+      ├── PanelBarra.java          -> Barra de progresos (CPU/RAM)
+      ├── PanelColaListo.java      -> Grafica 
       ├── PanelGantt.java          -> Diagrama animado
+      ├── VentanaGrafica.java      -> Ventana Principal
