@@ -227,7 +227,6 @@ public class Planificador {
         return new ResultadoSimulacion(gantt, orden, mensajes, tiempoActual);
     }
 
-    // ---------------------------------------------------------
     private void validarMemoria(Proceso p, List<String> mensajes, int tiempoActual) {
         if (!memoria.tieneMemoria(p.getPid())) {
             boolean ok = memoria.asignar(p);
