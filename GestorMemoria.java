@@ -1,17 +1,19 @@
 package controlador;
 
-import modelo.Proceso;
+import modelo.Procesos;
 import java.util.HashMap;
 
 /**
- * Simula una memoria RAM de tamaño fijo. Antes de que un proceso entre
- * a ejecucion, el planificador le pregunta a esta clase si hay espacio.
+ * Simula una memoria RAM de tamaño fijo.
  */
 public class GestorMemoria {
 
     private int capacidadTotalKB;
     private int usadaKB;
-    private HashMap<Integer, Integer> asignaciones = new HashMap<Integer, Integer>(); // pid -> KB usados
+
+    // pid -> KB usados
+    private HashMap<Integer, Integer> asignaciones =
+            new HashMap<Integer, Integer>();
 
     public GestorMemoria(int capacidadTotalKB) {
         this.capacidadTotalKB = capacidadTotalKB;
@@ -22,24 +24,37 @@ public class GestorMemoria {
         return capacidadTotalKB - usadaKB;
     }
 
-    // Intenta reservar memoria para un proceso. Devuelve true si alcanzo el espacio.
-    public boolean asignar(Proceso p) {
+    // Intenta reservar memoria para un proceso
+    public boolean asignar(Procesos p) {
+
         if (asignaciones.containsKey(p.getPid())) {
-            return true; // ya tenia memoria asignada
+            return true; // ya tenía memoria asignada
         }
+
         if (p.getMemoriaRequerida() <= getLibreKB()) {
-            asignaciones.put(p.getPid(), p.getMemoriaRequerida());
-            usadaKB = usadaKB + p.getMemoriaRequerida();
+
+            asignaciones.put(
+                    p.getPid(),
+                    p.getMemoriaRequerida()
+            );
+
+            usadaKB += p.getMemoriaRequerida();
+
             return true;
         }
+
         return false;
     }
 
-    // Libera la memoria de un proceso cuando termina
-    public void liberar(Proceso p) {
+    // Libera la memoria cuando el proceso termina
+    public void liberar(Procesos p) {
+
         if (asignaciones.containsKey(p.getPid())) {
+
             int kb = asignaciones.get(p.getPid());
-            usadaKB = usadaKB - kb;
+
+            usadaKB -= kb;
+
             asignaciones.remove(p.getPid());
         }
     }
