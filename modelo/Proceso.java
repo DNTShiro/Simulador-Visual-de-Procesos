@@ -1,4 +1,4 @@
-package controlador;
+
 
 import modelo.Proceso;
 
@@ -66,3 +66,4 @@ public class ColaProcesos {
         return tamano;
     }
 }
+Move Proceso.java to modelo package
