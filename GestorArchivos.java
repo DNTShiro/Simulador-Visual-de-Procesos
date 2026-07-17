@@ -1,5 +1,3 @@
-package persistencia;
-
 import modelo.Procesos;
 
 import java.io.BufferedReader;
