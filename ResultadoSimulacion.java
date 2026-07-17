@@ -1,7 +1,7 @@
 import modelo.Proceso;
 import java.utilList;
 
-public call ResultadoSimulacion {
+public class ResultadoSimulacion {
   public List<BlloqueGantt> LineaTiempo;
   public List<Proceso> procesos;
   public List<String> mensajes;
