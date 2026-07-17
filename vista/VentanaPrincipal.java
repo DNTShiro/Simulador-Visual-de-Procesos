@@ -491,8 +491,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
             boolean enEjecucion = false;
             for (int j = 0; j < resultadoActual.lineaTiempo.size(); j++) {
                 BloqueGantt b = resultadoActual.lineaTiempo.get(j);
-                if (b.pid == p.getPid() && b.inicio <= t && t < b.fin) {
-                    enEjecucion = true;
+         if (b.pid == p.getPid() && b.inicio <= t && t < b.fin) {
+                enEjecucion = true;
                     break;
                 }
             }
