@@ -242,3 +242,4 @@ public class Planificador {
         }
     }
 }
+Move Planificador.java to modelo package
