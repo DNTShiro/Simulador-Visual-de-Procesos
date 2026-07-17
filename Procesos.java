@@ -1,5 +1,3 @@
-package modelo;
-
 /**
  * Representa un proceso (PCB - Bloque de Control de Proceso).
  * Guarda los datos que se piden al usuario y los datos que calcula
