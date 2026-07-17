@@ -1,60 +1,82 @@
-package persistencia;
-
-import modelo.Proceso;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+package modelo;
 
 /**
- * Guarda y carga la lista de procesos en un archivo de texto plano,
- * para que el usuario no tenga que volver a escribir todo cada vez.
- * Cada linea del archivo tiene el formato:
- *   pid;nombre;llegada;rafaga;prioridad;memoria
+ * Representa un proceso (PCB - Bloque de Control de Proceso).
+ * Guarda los datos que se piden al usuario y los datos que calcula
+ * el planificador durante la simulacion.
  */
-public class GestorArchivos {
+public class Proceso {
 
-    public void guardar(File archivo, List<Proceso> procesos) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
-        bw.write("PID;NOMBRE;LLEGADA;RAFAGA;PRIORIDAD;MEMORIA_KB");
-        bw.newLine();
-        for (int i = 0; i < procesos.size(); i++) {
-            Proceso p = procesos.get(i);
-            bw.write(p.getPid() + ";" + p.getNombre() + ";" + p.getTiempoLlegada() + ";"
-                    + p.getRafaga() + ";" + p.getPrioridad() + ";" + p.getMemoriaRequerida());
-            bw.newLine();
-        }
-        bw.close();
+    private int pid;
+    private String nombre;
+    private int tiempoLlegada;
+    private int rafaga;          // tiempo de CPU que necesita
+    private int prioridad;
+    private int memoriaRequerida; // KB simulados
+
+    private int tiempoRestante;
+    private EstadoProceso estado;
+    private int tiempoInicio = -1;
+    private int tiempoFin = -1;
+    private boolean advertenciaMemoria = false;
+
+    public Proceso(int pid, String nombre, int tiempoLlegada, int rafaga, int prioridad, int memoriaRequerida) {
+        this.pid = pid;
+        this.nombre = nombre;
+        this.tiempoLlegada = tiempoLlegada;
+        this.rafaga = rafaga;
+        this.prioridad = prioridad;
+        this.memoriaRequerida = memoriaRequerida;
+        this.tiempoRestante = rafaga;
+        this.estado = EstadoProceso.NUEVO;
     }
 
-    public List<Proceso> cargar(File archivo) throws IOException {
-        List<Proceso> procesos = new ArrayList<Proceso>();
-        BufferedReader br = new BufferedReader(new FileReader(archivo));
-        String linea = br.readLine(); // saltar la cabecera
-        while ((linea = br.readLine()) != null) {
-            if (linea.trim().length() == 0) continue;
-            String[] campos = linea.split(";");
-            if (campos.length < 6) continue;
-            int pid = Integer.parseInt(campos[0].trim());
-            String nombre = campos[1].trim();
-            int llegada = Integer.parseInt(campos[2].trim());
-            int rafaga = Integer.parseInt(campos[3].trim());
-            int prioridad = Integer.parseInt(campos[4].trim());
-            int memoria = Integer.parseInt(campos[5].trim());
-            procesos.add(new Proceso(pid, nombre, llegada, rafaga, prioridad, memoria));
-        }
-        br.close();
-        return procesos;
+    public int getPid() { return pid; }
+    public String getNombre() { return nombre; }
+    public int getTiempoLlegada() { return tiempoLlegada; }
+    public int getRafaga() { return rafaga; }
+    public int getPrioridad() { return prioridad; }
+    public int getMemoriaRequerida() { return memoriaRequerida; }
+
+    public int getTiempoRestante() { return tiempoRestante; }
+    public void setTiempoRestante(int tiempoRestante) { this.tiempoRestante = tiempoRestante; }
+
+    public EstadoProceso getEstado() { return estado; }
+    public void setEstado(EstadoProceso estado) { this.estado = estado; }
+
+    public int getTiempoInicio() { return tiempoInicio; }
+    public void setTiempoInicio(int t) {
+        if (tiempoInicio == -1) tiempoInicio = t;
     }
 
-    public void guardarReporte(File archivo, String contenido) throws IOException {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(archivo));
-        bw.write(contenido);
-        bw.close();
+    public int getTiempoFin() { return tiempoFin; }
+    public void setTiempoFin(int tiempoFin) { this.tiempoFin = tiempoFin; }
+
+    public boolean isAdvertenciaMemoria() { return advertenciaMemoria; }
+    public void setAdvertenciaMemoria(boolean valor) { advertenciaMemoria = valor; }
+
+    // Tiempo de retorno = fin - llegada
+    public int getTiempoRetorno() {
+        if (tiempoFin == -1) return -1;
+        return tiempoFin - tiempoLlegada;
+    }
+
+    // Tiempo de espera = retorno - rafaga
+    public int getTiempoEspera() {
+        if (tiempoFin == -1) return -1;
+        return getTiempoRetorno() - rafaga;
+    }
+
+    // Vuelve a dejar el proceso como recien creado, para simular otra vez
+    public void reiniciar() {
+        tiempoRestante = rafaga;
+        estado = EstadoProceso.NUEVO;
+        tiempoInicio = -1;
+        tiempoFin = -1;
+        advertenciaMemoria = false;
+    }
+
+    public String toString() {
+        return "P" + pid + "-" + nombre;
     }
 }
