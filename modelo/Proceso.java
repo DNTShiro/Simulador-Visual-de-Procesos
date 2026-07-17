@@ -80,4 +80,4 @@ public class Proceso {
         return "P" + pid + "-" + nombre;
     }
 }
-Move Proceso.java to modelo package
+
