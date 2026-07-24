@@ -31,29 +31,59 @@ public class Proceso {
         this.estado = EstadoProceso.NUEVO;
     }
 
-    public int getPid() { return pid; }
-    public String getNombre() { return nombre; }
-    public int getTiempoLlegada() { return tiempoLlegada; }
-    public int getRafaga() { return rafaga; }
-    public int getPrioridad() { return prioridad; }
-    public int getMemoriaRequerida() { return memoriaRequerida; }
+    public int getPid() { 
+        return pid; 
+    }
+    public String getNombre() { 
+        return nombre; 
+    }
+    public int getTiempoLlegada() { 
+        return tiempoLlegada; 
+    }
+    public int getRafaga() { 
+        return rafaga; 
+    }
+    public int getPrioridad() { 
+        return prioridad; 
+    }
+    public int getMemoriaRequerida() { 
+        return memoriaRequerida; 
+    }
 
-    public int getTiempoRestante() { return tiempoRestante; }
-    public void setTiempoRestante(int tiempoRestante) { this.tiempoRestante = tiempoRestante; }
+    public int getTiempoRestante() { 
+        return tiempoRestante; 
+    }
+    public void setTiempoRestante(int tiempoRestante) { 
+        this.tiempoRestante = tiempoRestante; 
+    }
 
-    public EstadoProceso getEstado() { return estado; }
-    public void setEstado(EstadoProceso estado) { this.estado = estado; }
+    public EstadoProceso getEstado() { 
+        return estado; 
+    }
+    public void setEstado(EstadoProceso estado) { 
+        this.estado = estado; 
+    }
 
-    public int getTiempoInicio() { return tiempoInicio; }
+    public int getTiempoInicio() { 
+        return tiempoInicio; 
+    }
     public void setTiempoInicio(int t) {
         if (tiempoInicio == -1) tiempoInicio = t;
     }
 
-    public int getTiempoFin() { return tiempoFin; }
-    public void setTiempoFin(int tiempoFin) { this.tiempoFin = tiempoFin; }
+    public int getTiempoFin() { 
+        return tiempoFin; 
+    }
+    public void setTiempoFin(int tiempoFin) { 
+        this.tiempoFin = tiempoFin; 
+    }
 
-    public boolean isAdvertenciaMemoria() { return advertenciaMemoria; }
-    public void setAdvertenciaMemoria(boolean valor) { advertenciaMemoria = valor; }
+    public boolean isAdvertenciaMemoria() { 
+        return advertenciaMemoria; 
+    }
+    public void setAdvertenciaMemoria(boolean valor) { 
+        advertenciaMemoria = valor; 
+    }
 
     // Tiempo de retorno = fin - llegada
     public int getTiempoRetorno() {
