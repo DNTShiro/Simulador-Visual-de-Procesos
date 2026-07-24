@@ -59,7 +59,7 @@ public class ColaProcesos {
     }
 
     public boolean estaVacia(){
-    return frente == null;
+        return frente == null;
     }
     public int tamano() {
         return tamano;
