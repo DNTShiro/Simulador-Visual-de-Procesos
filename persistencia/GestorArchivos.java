@@ -37,9 +37,13 @@ public class GestorArchivos {
         BufferedReader br = new BufferedReader(new FileReader(archivo));
         String linea = br.readLine(); // saltar la cabecera
         while ((linea = br.readLine()) != null) {
-            if (linea.trim().length() == 0) continue;
+            if (linea.trim().length() == 0) {
+                continue;
+            }
             String[] campos = linea.split(";");
-            if (campos.length < 6) continue;
+            if (campos.length < 6) {
+                continue;
+            }
             int pid = Integer.parseInt(campos[0].trim());
             String nombre = campos[1].trim();
             int llegada = Integer.parseInt(campos[2].trim());
